@@ -1,0 +1,35 @@
+{
+  "name": "test-hr",
+  "version": "1.0.0",
+  "description": "Test to developer position in HR",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoncarey/test-hr.git"
+  },
+  "author": "Leonardo Carey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leoncarey/test-hr/issues"
+  },
+  "homepage": "https://github.com/leoncarey/test-hr#readme",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-less": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2"
+  }
+}

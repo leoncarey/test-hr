@@ -1,0 +1,38 @@
+
+.btn {
+  text-transform: uppercase;
+  padding: 15px 40px 18px;
+  border: 0.5px solid @quaternary;
+  color: @secondary;
+  background: @tertiary;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  .transition(all .3s ease);
+  .border-radius(30px);
+  .box-shadow(0 0 3px 0px @bg-fields);
+
+  &:hover {
+    background: lighten(@tertiary, 5%);
+    text-decoration: none;
+  }
+
+  &.btn-circle {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    text-align: center;
+  }
+
+  @media screen and (max-width: @screen-sm-max) {
+  }
+}
