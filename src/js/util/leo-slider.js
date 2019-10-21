@@ -13,10 +13,13 @@
 		/**
 		 * Init Slider
 		 */
+		$(this).addClass('leo-slider');
+
 		let itemsSlider = $(this).find(setup.itemClass),
 			slideSize = itemsSlider.width(),
 			totalSizeSlides = itemsSlider.length * itemsSlider.eq(0).width(),
-			templateDots = '';
+			templateDots = '',
+			self = this;
 
 		itemsSlider.eq(setup.currentSlide).addClass('current-slide');
 
@@ -82,17 +85,17 @@
 			if (direction == 'next') {
 				setup.currentSlide = setup.currentSlide < itemsSlider.length - 1 ? setup.currentSlide + 1 : 0;
 			} else {
-				setup.currentSlide = setup.currentSlide > itemsSlider.length - 1 ? setup.currentSlide - 1 : 0;
+				setup.currentSlide = setup.currentSlide == 0 ? itemsSlider.length - 1 : setup.currentSlide - 1;
 			}
 
-			$('.slider .current-slide').removeClass('current-slide');
+			$('.current-slide').removeClass('current-slide');
 
-			$('.slider .inner-slider').animate({
+			$(self).find('.inner-slider').animate({
 				left: -(slideSize * setup.currentSlide)
 			});
 
 			itemsSlider.eq(setup.currentSlide).addClass('current-slide');
-			$('.slider .dots li').removeClass('active').eq(setup.currentSlide).addClass('active');
+			$(self).find('.dots li').removeClass('active').eq(setup.currentSlide).addClass('active');
 		}
 
 

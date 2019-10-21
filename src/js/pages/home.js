@@ -5,8 +5,19 @@ var home = {
 		}
 	},
 	load: function () {
-		$('.banner').leoSlider({
-			autoplay: false
-		});
+		$('.banner').leoSlider();
+
+		// this.loadProducts();
+	},
+	loadProducts: function () {
+		let itemsProducts;
+
+		$.get(`${apiUrl}people`)
+			.done(function (res) {
+				console.log(res);
+			})
+			.fail(function (err) {
+				console.error('An error occurred ===> ', err);
+			});
 	}
 };
