@@ -27,4 +27,4 @@ npm start
 
 You have now two tabs. One with your little server, and another, is running `gulp`.
 
-You can open the project in [http://localhost:8080](http://localhost:8080){:target="_blank"}
+You can open the project in [http://localhost:8080](http://localhost:8080)
