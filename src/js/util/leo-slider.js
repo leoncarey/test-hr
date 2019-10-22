@@ -6,7 +6,8 @@
 			currentSlide: 0,
 			itemClass: '.item-slider',
 			speed: 5000,
-			autoplay: true
+			autoplay: true,
+			itemsPerSlide: 1
 		}, options);
 
 
@@ -16,13 +17,34 @@
 		$(this).addClass('leo-slider');
 
 		let itemsSlider = $(this).find(setup.itemClass),
-			slideSize = itemsSlider.width(),
+			slideSize = setup.itemsPerSlide != 1 ? $(this).width() : $(setup.itemClass).width(),
 			totalSizeSlides = itemsSlider.length * itemsSlider.eq(0).width(),
 			templateDots = '',
 			self = this;
 
-		itemsSlider.eq(setup.currentSlide).addClass('current-slide');
+		if (setup.itemsPerSlide != 1) {
+			let sizePerItem = $(this).width() / setup.itemsPerSlide;
 
+			itemsSlider.css({
+				width: sizePerItem,
+				float: 'left'
+			});
+		}
+
+		if ($(window).width() < 990) {
+			let sizeItemResponsive = $(this).find('.wrapper-slide').width();
+
+			slideSize = sizeItemResponsive;
+
+			itemsSlider.css({
+				width: sizeItemResponsive,
+				float: 'left'
+			});
+		}
+
+		for (let s = 1; s <= (setup.currentSlide + 1) * setup.itemsPerSlide; s++) {
+			itemsSlider.eq(s).addClass('current-slide');
+		}
 
 		/**
 		 * Resize wrapper
@@ -35,8 +57,9 @@
 		/**
 		 * Creation dots
 		 */
+		$(this).find('.dots').remove();
 		$(this).append('<ul class="dots"></ul>');
-		for (let s = 0; s < itemsSlider.length; s++) {
+		for (let s = 0; s < (itemsSlider.length / setup.itemsPerSlide); s++) {
 			templateDots += `<li><a href="#"></a></li>`;
 		}
 
@@ -62,16 +85,17 @@
 		/**
 		 * Arrow events
 		 */
+		$(this).find('.arrow-slider').remove();
 		$(this).append(`
 			<button class="arrow-slider arrow-slider-left"></button>
 			<button class="arrow-slider arrow-slider-right"></button>
 		`);
 
-		$('.arrow-slider-left').click(function (e) {
+		$(this).find('.arrow-slider-left').click(function (e) {
 			e.preventDefault();
 			goToSlide('prev');
 		});
-		$('.arrow-slider-right').click(function (e) {
+		$(this).find('.arrow-slider-right').click(function (e) {
 			e.preventDefault();
 			goToSlide();
 		});
@@ -82,10 +106,26 @@
 		 * @param direction: 'next' is default or 'prev'
 		 */
 		function goToSlide(direction = 'next') {
+			let finalSlider = Math.round(itemsSlider.length / setup.itemsPerSlide);
+
 			if (direction == 'next') {
-				setup.currentSlide = setup.currentSlide < itemsSlider.length - 1 ? setup.currentSlide + 1 : 0;
+
+				setup.currentSlide =
+					setup.currentSlide < itemsSlider.length - 1 ?
+						setup.currentSlide + 1 : 0;
+
+				if (setup.currentSlide >= finalSlider) {
+					setup.currentSlide = 0;
+				}
+
 			} else {
-				setup.currentSlide = setup.currentSlide == 0 ? itemsSlider.length - 1 : setup.currentSlide - 1;
+
+				let decreaseNumber = setup.itemsPerSlide == 1 ?
+					itemsSlider.length - 1 : setup.itemsPerSlide;
+
+				setup.currentSlide =
+					setup.currentSlide == 0 ? decreaseNumber : setup.currentSlide - 1;
+
 			}
 
 			$('.current-slide').removeClass('current-slide');

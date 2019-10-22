@@ -1,0 +1,71 @@
+.block-cards {
+  padding: 20px 0;
+  text-align: center;
+
+  .item-card {
+    width: 24%;
+    min-height: 200px;
+    margin-bottom: 60px;
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none;
+    padding: 0;
+
+    > div {
+      cursor: pointer;
+      background: @white;
+      overflow: hidden;
+      margin: 0 5px;
+      border-bottom: 6px solid @primary;
+      .box-shadow(0 0 6px 1px @bg-fields);
+      .border-radius(4px);
+      .transition(all .3s ease);
+    }
+
+    &:hover > div {
+      .box-shadow(0 0 6px 1px @general-text);
+    }
+  }
+
+  .image-thumb {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid @bg-fields;
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      .translate(-50%, -50%);
+      width: 100%;
+    }
+  }
+
+  .title-card {
+    width: 100%;
+    display: block;
+    margin: 20px 0;
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 300;
+    color: @secondary;
+    text-align: center;
+  }
+
+  p {
+    padding: 0 20px 40px;
+    margin: 0;
+    text-align: left;
+    color: @general-text;
+  }
+
+  @media screen and (max-width: @screen-desktop) {
+    .item-card {
+      width: calc(100vw);
+      float: left;
+    }
+  }
+
+}

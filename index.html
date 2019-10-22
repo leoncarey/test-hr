@@ -3,6 +3,11 @@
 <head>
     <base href="/">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
     <title>Test Hogarth</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600&display=swap&subset=latin-ext"
@@ -21,11 +26,17 @@
 <header id="header">
     <div class="container">
         <div class="header-top">
+            <a href="#" class="hamburger only-mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+
             <a href="/" class="logo">
                 <img src="/dist/img/logo-horizontal.png" alt="My logo">
             </a>
 
-            <div class="buttons-top">
+            <div class="buttons-top hide-mobile">
                 <a href="#" class="btn">
                     <div>
                         <span>Where to buy</span>
@@ -50,10 +61,17 @@
 
         <div class="header-bottom">
             <nav class="menu">
+                <a href="#" class="close-button only-mobile">&times;</a>
+
                 <ul>
                     <li><a href="products">Products</a></li>
                     <li><a href="recipes">Recipes</a></li>
                     <li><a href="special-offers">Special Offers</a></li>
+                </ul>
+
+                <ul class="only-mobile">
+                    <li><a href="special-offers">Where to buy</a></li>
+                    <li><a href="special-offers">Print</a></li>
                 </ul>
             </nav>
         </div>

@@ -103,4 +103,73 @@
       }
     }
   }
+
+  .hamburger {
+    width: 28px;
+    height: 26px;
+    float: left;
+    margin-top: 40px;
+    margin-left: 20px;
+
+    span {
+      width: 100%;
+      height: 3px;
+      background: @white;
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+
+  .close-button {
+    font-size: 40px !important;
+    line-height: 42px !important;
+    font-weight: 300;
+    color: @white;
+    text-decoration: none;
+    text-align: center;
+    display: none;
+  }
+
+  @media screen and (max-width: @screen-tablet) {
+    height: 120px;
+    z-index: 9999;
+
+    .close-button {
+      display: block;
+    }
+
+    .header-top {
+      display: block;
+    }
+
+    .logo {
+      width: 140px;
+      margin: 0 auto;
+    }
+
+    .menu {
+      width: calc(100vw);
+      height: calc(100vh);
+      margin-top: 0;
+      position: fixed;
+      background: @secondary;
+      left: -400px;
+      top: 0;
+      z-index: 9999;
+      .transition(left .3s ease);
+
+      li {
+        display: block;
+      }
+
+      a {
+        .border-radius(0) !important;
+        border: 0 !important;
+      }
+
+      &.opened {
+        left: 0;
+      }
+    }
+  }
 }

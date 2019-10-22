@@ -41,6 +41,47 @@
   }
 }
 
+#loader-section {
+  width: 100%;
+  height: auto;
+  margin: 140px auto;
+  position: relative;
+  .transition(opacity .4s ease);
+  background: @bg-body;
+  z-index: 98;
+
+  &.site-loaded {
+    .opacity(0);
+    z-index: -1;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    .translate(-50%, -50%);
+  }
+
+  .cube1, .cube2 {
+    background-color: @general-text;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
+    animation: sk-cubemove 1.8s infinite ease-in-out;
+  }
+
+  .cube2 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+  }
+}
+
 @-webkit-keyframes sk-cubemove {
   25% {
     -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5)

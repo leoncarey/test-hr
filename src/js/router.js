@@ -32,6 +32,7 @@ function loadPage(pageLoad) {
 	jQuery('#app').load(pageLoad);
 
 	setTimeout(() => {
+		application.init();
 		jQuery('#loader').addClass('site-loaded');
 	}, 600);
 }

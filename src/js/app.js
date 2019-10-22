@@ -8,9 +8,27 @@ var apiUrl = 'https://swapi.co/api/',
 /**
  * Loaders
  */
-jQuery(($) => {
-	'use strict';
+var application = {
+	init: function () {
+		home.init();
+		products.init();
+	},
+	menu: function () {
+		$('.hamburger').on('click', function (e) {
+			e.preventDefault();
+			$('.menu').addClass('opened');
+			return false;
+		});
 
-	home.init();
-	products.init();
+		$('.close-button').on('click', function (e) {
+			e.preventDefault();
+			$('.menu').removeClass('opened');
+			return false;
+		});
+	}
+};
+
+
+jQuery(($) => {
+	application.menu();
 });
